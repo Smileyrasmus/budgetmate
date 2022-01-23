@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>98</y>
+      <w>203</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>Account
+--
++ Name: string
++ DebitBalance: decimal
++ KreditBalance: decimal
+- Entries: List&lt;Entry&gt;
+--
++ &lt;&lt;create&gt;&gt;(name: string)
++ AddEntry(entry: Entry)
++ RemoveEntry(entry: Entry)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>7</x>
+      <y>98</y>
+      <w>231</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>User
+--
++ Name: string
+- Accounts: List&lt;Account&gt;
+- JournalEntries: List&lt;JournalEntries&gt;
+--
++ &lt;&lt;create&gt;&gt;(name: string)
++ AddAccount(account: Account)
++ RemoveAccount(account: Account)
++ AddJournalEntry(journalEntry: JournalEntry)
++ RemoveJournalEntry(journalEntry: JournalEntry)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>322</y>
+      <w>217</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>Entry
+--
++ DebitAmount: decimal &lt;&lt;ReadOnly&gt;&gt;
++ KreditAmount: decimal &lt;&lt;ReadOnly&gt;&gt;
++ RelatedJounalEntry: JounalEntry &lt;&lt;ReadOnly&gt;&gt;
++ RelatedAccount: Account &lt;&lt;ReadOnly&gt;&gt;
+--
++ &lt;&lt;create&gt;&gt;(jounalEntry: JounalEntry,
+             account: Account,
+             DebitAmount: decimal,
+             KreditAmount: decimal)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>28</x>
+      <y>322</y>
+      <w>210</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>JournalEntry
+--
++ Note: string
++ Date: DateTime &lt;&lt;ReadOnly&gt;&gt;
+- Entries: List&lt;Entry&gt;
+--
++ AddEntry(entry: Entry)
++ RemoveEntry(entry: Entry)
++ ValidateBalance(): bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>231</x>
+      <y>210</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>266</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>231</x>
+      <y>385</y>
+      <w>91</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>154</x>
+      <y>266</y>
+      <w>21</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>315</y>
+      <w>217</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IRepository&lt;T&gt;
+--
+/+ Create(object T)/
+/+ Read(id: int): T/
+/+ Update(idToUpdate: int, updatedObject T)/
+/+ Delete(object T)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1092</x>
+      <y>315</y>
+      <w>203</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IModelValidator&lt;T&gt;
+--
+
+--
+/+ ValidateModel(object: T): bool/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>560</y>
+      <w>231</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>UserRepository
+--
+- UserValidator: IModelValidator&lt;User&gt;
+--
++ &lt;&lt;create&gt;&gt;()
++ Create(object User)
++ Read(id: int): User
++ Update(idToUpdate: int, updatedObject User)
++ Delete(object User)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>483</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>952</x>
+      <y>399</y>
+      <w>154</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1092</x>
+      <y>560</y>
+      <w>231</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>UserValidator
+--
+
+--
++ &lt;&lt;create&gt;&gt;()
++ ValidateModel(object: User): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1183</x>
+      <y>483</y>
+      <w>21</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>966</x>
+      <y>364</y>
+      <w>105</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Repeat pattern for
+Account, JournalEntry
+and Entry
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
