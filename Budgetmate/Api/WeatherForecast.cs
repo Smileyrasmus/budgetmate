@@ -1,4 +1,4 @@
-namespace BudgetmateApi;
+namespace Api;
 
 public class WeatherForecast
 {
