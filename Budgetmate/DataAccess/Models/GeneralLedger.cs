@@ -8,12 +8,12 @@ namespace DataAccess.Models
         {
             Accounts = new List<Account>
             {
-                new Account("Aktieudbytte"),
-                new Account("Udgifter"),
-                new Account("Aktiver"),
-                new Account("Passiver"),
-                new Account("Egenkapital"),
-                new Account("Indkomst")
+                new Account("Aktieudbytte", TransactionType.Debit),
+                new Account("Udgifter", TransactionType.Debit),
+                new Account("Aktiver", TransactionType.Debit),
+                new Account("Passiver", TransactionType.Credit),
+                new Account("Egenkapital", TransactionType.Credit),
+                new Account("Indkomst", TransactionType.Credit)
             };
         }
     }
